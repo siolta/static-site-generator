@@ -1,5 +1,5 @@
 from textnode import TextNode, TextType
-from htmlnode import HTMLNode, LeafNode
+from htmlnode import HTMLNode, LeafNode, ParentNode
 
 
 def main():
@@ -20,6 +20,30 @@ def main():
     print(leaf_node_div.to_html())
     leaf_node_none = LeafNode(None, "this is a div value")
     print(leaf_node_none.to_html())
+    node = ParentNode(
+        "p1",
+        [
+            LeafNode("b", "Bold text"),
+            LeafNode(None, "Normal text"),
+            ParentNode(
+                "p2",
+                [
+                    LeafNode("div2", "div2 text"),
+                    LeafNode(None, "Normal2 text"),
+                    ParentNode(
+                        "p3",
+                        [
+                            LeafNode("div3", "div3 text"),
+                            LeafNode(None, "Normal3 text"),
+                        ],
+                    ),
+                ],
+            ),
+            LeafNode(None, "Normal text"),
+        ],
+    )
+
+    print(node.to_html())
 
 
 if __name__ == "__main__":
