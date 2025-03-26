@@ -41,6 +41,7 @@ def main():
             ),
             LeafNode(None, "Normal text"),
         ],
+        {},
     )
 
     print(node.to_html())

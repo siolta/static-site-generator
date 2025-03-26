@@ -125,6 +125,36 @@ class TestParentNode(unittest.TestCase):
             "<div><span><b>grandchild</b></span></div>",
         )
 
+    def test_to_html_many_children(self):
+        node = ParentNode(
+            "p",
+            [
+                LeafNode("b", "Bold text"),
+                LeafNode(None, "Normal text"),
+                LeafNode("i", "italic text"),
+                LeafNode(None, "Normal text"),
+            ],
+        )
+        self.assertEqual(
+            node.to_html(),
+            "<p><b>Bold text</b>Normal text<i>italic text</i>Normal text</p>",
+        )
+
+    def test_headings(self):
+        node = ParentNode(
+            "h2",
+            [
+                LeafNode("b", "Bold text"),
+                LeafNode(None, "Normal text"),
+                LeafNode("i", "italic text"),
+                LeafNode(None, "Normal text"),
+            ],
+        )
+        self.assertEqual(
+            node.to_html(),
+            "<h2><b>Bold text</b>Normal text<i>italic text</i>Normal text</h2>",
+        )
+
     def test_to_html_with_mixed_children_empty_subparent(self):
         child_node = LeafNode("b", "grandchild")
         sub_parent_node = ParentNode("span", [])
@@ -142,6 +172,13 @@ class TestParentNode(unittest.TestCase):
         self.assertEqual(
             parent_node.to_html(),
             "<div><span><b>grandchild</b></span><b>child1</b></div>",
+        )
+
+    def test_to_html_with_props(self):
+        child_node = LeafNode("span", "child")
+        parent_node = ParentNode("a", [child_node], {"href": "https://test.link"})
+        self.assertEqual(
+            parent_node.to_html(), '<a href="https://test.link"><span>child</span></a>'
         )
 
 
