@@ -19,6 +19,8 @@ def markdown_to_blocks(document):
 def block_to_block_type(block):
     if re.match(r"^#{1,6}", block):
         return BlockType.HEADING
+    if block[:3] == "```" and block.rstrip("\n")[-3:] == "```":
+        return BlockType.CODE
     for line in block:
         pass
     return BlockType.PARAGRAPH
