@@ -21,6 +21,6 @@ def block_to_block_type(block):
         return BlockType.HEADING
     if block[:3] == "```" and block.rstrip("\n")[-3:] == "```":
         return BlockType.CODE
-    for line in block:
+    for line in block.split("\n"):
         pass
     return BlockType.PARAGRAPH
