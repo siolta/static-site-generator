@@ -22,5 +22,9 @@ def block_to_block_type(block):
     if block[:3] == "```" and block.rstrip("\n")[-3:] == "```":
         return BlockType.CODE
     for line in block.split("\n"):
+        # 3 cases;
+        # each line starts with '>'
+        # each line starts with '-'
+        # each line starts with a digit + '.', incrementing subsequently
         pass
     return BlockType.PARAGRAPH
