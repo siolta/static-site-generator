@@ -21,7 +21,7 @@ def block_to_block_type(block):
 
     if re.match(r"^#{1,6}", block):
         return BlockType.HEADING
-    if len(lines) > 1 and block[:3] == "```" and block.rstrip("\n")[-3:] == "```":
+    if len(lines) > 1 and lines[0].startswith("```") and lines[-1].startswith("```"):
         return BlockType.CODE
     if block.startswith(">"):
         for line in lines:
