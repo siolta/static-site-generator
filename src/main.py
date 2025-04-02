@@ -1,10 +1,13 @@
-from textnode import TextNode, TextType
-from htmlnode import HTMLNode, LeafNode, ParentNode
-from markdown_blocks import block_to_block_type, markdown_to_html_node
+from copystatic import clean_target_dir, copy_static_assets
+
+
+PUBLIC_DIR = "./public"
+STATIC_DIR = "./static"
 
 
 def main():
-    pass
+    clean_target_dir(PUBLIC_DIR)
+    copy_static_assets(STATIC_DIR, PUBLIC_DIR)
 
 
 if __name__ == "__main__":
