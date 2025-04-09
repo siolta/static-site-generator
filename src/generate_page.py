@@ -13,4 +13,10 @@ def extract_title(markdown):
 
 
 def generate_page(from_path, template_path, dest_path):
-    pass
+    print(f"Generating page from {from_path} to {dest_path} using {template_path}")
+
+    with open(from_path) as from_handle, open(template_path) as template_handle:
+        markdown = from_handle.read()
+        template = template_handle.read()
+        print(markdown)
+        print(template)
