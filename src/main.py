@@ -12,7 +12,6 @@ TEMPLATE_PATH = "./template.html"
 def main():
     basepath = "/"
     if len(argv) > 1:
-        print("args:", argv)
         basepath = argv[1]
 
     clean_target_dir(TARGET_PATH)
