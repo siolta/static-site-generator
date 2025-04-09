@@ -11,6 +11,7 @@ def clean_target_dir(target_dir):
 
 
 def copy_static_assets(src, dst):
+    print("Copying static files to public directory...")
     if not path.exists(dst):
         mkdir(dst)
 

@@ -1,6 +1,5 @@
-import os
 from copystatic import clean_target_dir, copy_static_assets
-from generate_content import generate_page
+from generate_content import generate_pages_recursive
 
 
 PUBLIC_PATH = "./public"
@@ -16,9 +15,7 @@ def main():
     copy_static_assets(STATIC_PATH, PUBLIC_PATH)
 
     print("Generating pages...")
-    md_index_path = os.path.join(CONTENT_PATH, "index.md")
-    html_index_path = os.path.join(PUBLIC_PATH, "index.html")
-    generate_page(md_index_path, TEMPLATE_PATH, html_index_path)
+    generate_pages_recursive(CONTENT_PATH, TEMPLATE_PATH, PUBLIC_PATH)
 
 
 if __name__ == "__main__":
