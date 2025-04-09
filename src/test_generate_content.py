@@ -1,6 +1,6 @@
 import unittest
 
-from generate_page import extract_title
+from generate_content import extract_title
 
 
 # --- Markdown title cases ---
