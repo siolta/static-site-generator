@@ -1,3 +1,7 @@
+from os import path, mkdir
+from markdown_blocks import markdown_to_html_node
+
+
 def extract_title(markdown):
     # Split lines
     # search each line for one that starts with "# "
@@ -18,5 +22,13 @@ def generate_page(from_path, template_path, dest_path):
     with open(from_path) as from_handle, open(template_path) as template_handle:
         markdown = from_handle.read()
         template = template_handle.read()
-        print(markdown)
-        print(template)
+        html = markdown_to_html_node(markdown).to_html()
+        title = extract_title(markdown)
+        new_template = template.replace("{{ Title }}", title)
+        new_template = new_template.replace("{{ Content }}", html)
+
+        dest_pathname = path.dirname(dest_path)
+        if not path.exists(dest_pathname):
+            mkdir(dest_pathname)
+        with open(dest_path, "w") as dest_file:
+            dest_file.write(new_template)

@@ -10,10 +10,9 @@ TARGET_PATH = "public/index.html"
 
 
 def main():
-    # clean_target_dir(PUBLIC_DIR)
-    # copy_static_assets(STATIC_DIR, PUBLIC_DIR)
+    clean_target_dir(PUBLIC_DIR)
+    copy_static_assets(STATIC_DIR, PUBLIC_DIR)
     generate_page(SRC_PATH, TEMPLATE_PATH, TARGET_PATH)
-    pass
 
 
 if __name__ == "__main__":
